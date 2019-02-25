@@ -25,10 +25,3 @@ export default {
   }
 }
 </script>
-
-<style>
-.project-timeline-month {
-  position: relative;
-  white-space: nowrap;
-}
-</style>

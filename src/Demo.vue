@@ -30,13 +30,14 @@ export default {
         },
         {
           name: 'Streamline customized models',
-          color: 'crimson',
+          color: 'coral',
           start: new Date('2019-02-10'),
           end: new Date('2019-03-04'),
           actualStart: new Date('2019-02-15')
         },
         {
           name: 'Evolve front-end infrastructures',
+          color: 'lavender',
           start: new Date('2019-04-10'),
           end: new Date('2019-06-23')
         }
