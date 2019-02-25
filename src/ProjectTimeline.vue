@@ -2,6 +2,7 @@
   <div
     class="project-timeline"
     :style="{
+      '-webkit-overflow-scrolling': 'touch',
       overflowX: 'auto'
     }"
   >
@@ -13,6 +14,14 @@
         width: `${width}%`
       }"
     >
+      <project-timeline-pillar
+        v-for="(month, name, i) in months"
+        :key="`pillar-${i}`"
+        :order="i + 1"
+        :start-day="month.startDay"
+        :end-day="month.endDay"
+      />
+
       <project-timeline-bar
         v-for="(project, i) in projects"
         :key="`project-${i}`"
@@ -40,9 +49,10 @@
 <script>
 import ProjectTimelineBar from '@/components/ProjectTimelineBar'
 import ProjectTimelineMonth from '@/components/ProjectTimelineMonth'
+import ProjectTimelinePillar from '@/components/ProjectTimelinePillar'
 
 import {
-  differenceInDays,
+  differenceInCalendarDays,
   eachDayOfInterval,
   format,
   getDaysInMonth,
@@ -55,7 +65,8 @@ export default {
 
   components: {
     ProjectTimelineBar,
-    ProjectTimelineMonth
+    ProjectTimelineMonth,
+    ProjectTimelinePillar
   },
 
   props: {
@@ -100,7 +111,8 @@ export default {
      * @returns {Number}
      */
     days () {
-      return differenceInDays(this.end, this.start)
+      // Add one day to offset CSS Grid line numbering
+      return differenceInCalendarDays(this.end, this.start) + 1
     },
     /**
      * @returns {{ 'y-MM': { startDay: Number, endDay: Number } }}
@@ -112,9 +124,7 @@ export default {
 
           if (!accumulator[month]) {
             const startDay = index + 1
-            // End at last timeline day if month end day is after last timeline day
-            // Add 1 to the result to adjust the CSS Grid offset
-            const endDay = Math.min(startDay + getDaysInMonth(current), this.days)
+            const endDay = startDay + getDaysInMonth(current)
 
             accumulator[month] = { startDay, endDay }
           }

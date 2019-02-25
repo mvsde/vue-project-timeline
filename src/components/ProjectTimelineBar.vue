@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import { differenceInDays } from 'date-fns'
+import { differenceInCalendarDays } from 'date-fns'
 
 export default {
   name: 'ProjectTimelineBar',
@@ -59,26 +59,24 @@ export default {
       return this.start < this.timeline.end && this.end > this.timeline.start
     },
     startDay () {
-      const start = differenceInDays(this.start, this.timeline.start)
+      const start = differenceInCalendarDays(this.start, this.timeline.start)
       // Start at day 1 if the first timeline day is after the project start day
       return Math.max(1, start)
     },
     endDay () {
-      const end = differenceInDays(this.end, this.timeline.start)
+      const end = differenceInCalendarDays(this.end, this.timeline.start)
       // End at last timeline day if project end day is after last timeline day
-      // Add 1 to the result to adjust the CSS Grid offset
-      return Math.min(this.timeline.days, end) + 1
+      return Math.min(this.timeline.days, end)
     },
     actualStartDay () {
-      const actualStart = differenceInDays(this.actualStart, this.timeline.start)
+      const actualStart = differenceInCalendarDays(this.actualStart, this.timeline.start)
       // Start at day 1 if the first timeline day is after the project start day
       return Math.max(1, actualStart)
     },
     actualEndDay () {
-      const actualEnd = differenceInDays(this.actualEnd, this.timeline.start)
+      const actualEnd = differenceInCalendarDays(this.actualEnd, this.timeline.start)
       // End at last timeline day if project end day is after last timeline day
-      // Add 1 to the result to adjust the CSS Grid offset
-      return Math.min(this.timeline.days, actualEnd) + 1
+      return Math.min(this.timeline.days, actualEnd)
     }
   }
 }
