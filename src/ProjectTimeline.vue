@@ -84,7 +84,7 @@ export default {
     },
     displayMonths: {
       type: Number,
-      default: 6
+      default: 12
     }
   },
 

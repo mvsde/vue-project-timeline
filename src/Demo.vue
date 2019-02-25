@@ -1,9 +1,28 @@
 <template>
-  <project-timeline
-    :timeline-start="timelineStart"
-    :timeline-end="timelineEnd"
-    :projects="projects"
-  />
+  <div>
+    <button
+      aria-label="Zoom out"
+      @click="displayMonths--"
+    >
+      -
+    </button>
+
+    {{ displayMonths }} months
+
+    <button
+      aria-label="Zoom in"
+      @click="displayMonths++"
+    >
+      +
+    </button>
+
+    <project-timeline
+      :timeline-start="timelineStart"
+      :timeline-end="timelineEnd"
+      :display-months="displayMonths"
+      :projects="projects"
+    />
+  </div>
 </template>
 
 <script>
@@ -20,6 +39,7 @@ export default {
     return {
       timelineStart: new Date('2018-11-10'),
       timelineEnd: new Date('2019-05-20'),
+      displayMonths: 6,
       projects: [
         {
           name: 'Visualize vertical interfaces',
