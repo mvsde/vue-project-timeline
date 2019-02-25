@@ -2,37 +2,58 @@
   <div
     class="project-timeline"
     :style="{
-      gridTemplateColumns: `repeat(${days}, 1fr)`,
-      gridTemplateRows: `repeat(${rows}, 1fr) min-content`
+      overflowX: 'auto'
     }"
   >
-    <slot />
-    <p
-      v-for="(monthStart, month) in months"
-      :key="monthStart"
-      class="project-timeline__month"
+    <div
+      class="project-timeline-grid"
       :style="{
-        gridColumnStart: monthStart
+        display: 'grid',
+        gridTemplateColumns: `repeat(${days}, 1fr)`,
+        gridTemplateRows: `repeat(${rows}, 1fr) min-content`,
+        width: `${zoom}%`
       }"
     >
-      <span>
-        {{ month }}
-      </span>
-    </p>
+      <project-timeline-bar
+        v-for="(project, i) in projects"
+        :key="`project-${i}`"
+        :timeline="{ start, end, days }"
+        :color="project.color"
+        :order="i + 1"
+        :start="project.start"
+        :end="project.end"
+      >
+        {{ project.name }}
+      </project-timeline-bar>
+
+      <project-timeline-month
+        v-for="(month, name, i) in months"
+        :key="`month-${i}`"
+        :start-day="month.start"
+        :end-day="month.end"
+        :days="month.days"
+      >
+        {{ name }}
+      </project-timeline-month>
+    </div>
   </div>
 </template>
 
 <script>
-import { differenceInDays, eachDayOfInterval, format } from 'date-fns'
+import ProjectTimelineBar from '@/components/ProjectTimelineBar'
+import ProjectTimelineMonth from '@/components/ProjectTimelineMonth'
+
+import { differenceInDays, eachDayOfInterval, format, getDaysInMonth } from 'date-fns'
 
 export default {
   name: 'ProjectTimeline',
 
+  components: {
+    ProjectTimelineBar,
+    ProjectTimelineMonth
+  },
+
   props: {
-    visibleMonths: {
-      type: Number,
-      default: 12
-    },
     start: {
       type: Date,
       required: true
@@ -41,59 +62,41 @@ export default {
       type: Date,
       required: true
     },
-    defaultColor: {
-      type: String,
-      default: 'rgba(0, 0, 0, 0.2)'
-    }
-  },
-
-  provide () {
-    return {
-      defaultColor: this.defaultColor,
-      timelineStart: this.start
-    }
-  },
-
-  data () {
-    return {
-      rows: 0
+    projects: {
+      type: Array,
+      required: true
+    },
+    zoom: {
+      type: Number,
+      default: 100
     }
   },
 
   computed: {
+    rows () {
+      return this.projects.length
+    },
     days () {
       return differenceInDays(this.end, this.start)
     },
     months () {
       return eachDayOfInterval({ start: this.start, end: this.end })
         .reduce((accumulator, current, index) => {
-          const date = format(current, 'y-MM')
+          const month = format(current, 'y-MM')
 
-          if (!accumulator[date]) {
-            accumulator[date] = index
+          if (!accumulator[month]) {
+            const start = index + 1
+            const days = getDaysInMonth(current)
+            // End at last timeline day if month end day is after last timeline day
+            // Add 1 to the result to adjust the CSS Grid offset
+            const end = Math.min(start + days, this.days) + 1
+
+            accumulator[month] = { start, end, days }
           }
 
           return accumulator
         }, {})
     }
-  },
-
-  mounted () {
-    this.rows = this.$children.length
   }
 }
 </script>
-
-<style>
-.project-timeline {
-  display: grid;
-}
-
-.project-timeline__month {
-  grid-row-end: -1;
-}
-
-.project-timeline__month > * {
-  position: absolute;
-}
-</style>
