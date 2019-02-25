@@ -21,10 +21,6 @@ export default {
     endDay: {
       type: Number,
       required: true
-    },
-    days: {
-      type: Number,
-      required: true
     }
   }
 }

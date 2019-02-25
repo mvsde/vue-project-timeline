@@ -1,7 +1,7 @@
 <template>
   <project-timeline
-    :start="start"
-    :end="end"
+    :timeline-start="timelineStart"
+    :timeline-end="timelineEnd"
     :projects="projects"
   />
 </template>
@@ -18,8 +18,8 @@ export default {
 
   data () {
     return {
-      start: new Date('2018-11-10'),
-      end: new Date('2019-05-20'),
+      timelineStart: new Date('2018-11-10'),
+      timelineEnd: new Date('2019-05-20'),
       projects: [
         {
           name: 'Visualize vertical interfaces',

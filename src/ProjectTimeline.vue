@@ -9,9 +9,8 @@
       class="project-timeline-grid"
       :style="{
         display: 'grid',
-        gridTemplateColumns: `repeat(${days}, 1fr)`,
-        gridTemplateRows: `repeat(${rows}, 1fr) min-content`,
-        width: `${zoom}%`
+        gridTemplate: `repeat(${rows}, 1fr) min-content / repeat(${days}, 1fr)`,
+        width: `${width}%`
       }"
     >
       <project-timeline-bar
@@ -29,9 +28,8 @@
       <project-timeline-month
         v-for="(month, name, i) in months"
         :key="`month-${i}`"
-        :start-day="month.start"
-        :end-day="month.end"
-        :days="month.days"
+        :start-day="month.startDay"
+        :end-day="month.endDay"
       >
         {{ name }}
       </project-timeline-month>
@@ -43,7 +41,14 @@
 import ProjectTimelineBar from '@/components/ProjectTimelineBar'
 import ProjectTimelineMonth from '@/components/ProjectTimelineMonth'
 
-import { differenceInDays, eachDayOfInterval, format, getDaysInMonth } from 'date-fns'
+import {
+  differenceInDays,
+  eachDayOfInterval,
+  format,
+  getDaysInMonth,
+  lastDayOfMonth,
+  setDate
+} from 'date-fns'
 
 export default {
   name: 'ProjectTimeline',
@@ -54,11 +59,11 @@ export default {
   },
 
   props: {
-    start: {
+    timelineStart: {
       type: Date,
       required: true
     },
-    end: {
+    timelineEnd: {
       type: Date,
       required: true
     },
@@ -66,36 +71,62 @@ export default {
       type: Array,
       required: true
     },
-    zoom: {
+    displayMonths: {
       type: Number,
-      default: 100
+      default: 6
     }
   },
 
   computed: {
+    /**
+     * @returns {Number}
+     */
     rows () {
       return this.projects.length
     },
+    /**
+     * @returns {Date}
+     */
+    start () {
+      return setDate(this.timelineStart, 1)
+    },
+    /**
+     * @returns {Date}
+     */
+    end () {
+      return lastDayOfMonth(this.timelineEnd)
+    },
+    /**
+     * @returns {Number}
+     */
     days () {
       return differenceInDays(this.end, this.start)
     },
+    /**
+     * @returns {{ 'y-MM': { startDay: Number, endDay: Number } }}
+     */
     months () {
       return eachDayOfInterval({ start: this.start, end: this.end })
         .reduce((accumulator, current, index) => {
           const month = format(current, 'y-MM')
 
           if (!accumulator[month]) {
-            const start = index + 1
-            const days = getDaysInMonth(current)
+            const startDay = index + 1
             // End at last timeline day if month end day is after last timeline day
             // Add 1 to the result to adjust the CSS Grid offset
-            const end = Math.min(start + days, this.days) + 1
+            const endDay = Math.min(startDay + getDaysInMonth(current), this.days)
 
-            accumulator[month] = { start, end, days }
+            accumulator[month] = { startDay, endDay }
           }
 
           return accumulator
         }, {})
+    },
+    /**
+     * @returns {Number}
+     */
+    width () {
+      return Math.max(100, Object.values(this.months).length / this.displayMonths * 100)
     }
   }
 }
