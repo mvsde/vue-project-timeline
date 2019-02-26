@@ -1,20 +1,22 @@
 <template>
   <div>
-    <button
-      aria-label="Zoom out"
-      @click="displayMonths--"
-    >
-      -
-    </button>
+    <div class="zoom">
+      <button
+        aria-label="Zoom out"
+        @click="displayMonths--"
+      >
+        -
+      </button>
 
-    {{ displayMonths }} months
+      {{ displayMonths }} months
 
-    <button
-      aria-label="Zoom in"
-      @click="displayMonths++"
-    >
-      +
-    </button>
+      <button
+        aria-label="Zoom in"
+        @click="displayMonths++"
+      >
+        +
+      </button>
+    </div>
 
     <project-timeline
       :start-month="startMonth"
@@ -52,12 +54,12 @@ export default {
           name: 'Streamline customized models',
           color: 'coral',
           start: new Date('2019-01-30'),
-          end: new Date('2019-02-20'),
+          end: new Date('2019-03-05'),
           actualStart: new Date('2019-02-15')
         },
         {
           name: 'Evolve front-end infrastructures',
-          color: 'lavender',
+          color: 'lightblue',
           start: new Date('2019-04-10'),
           end: new Date('2019-06-23')
         }
@@ -66,3 +68,23 @@ export default {
   }
 }
 </script>
+
+<style>
+body {
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    'Open Sans',
+    'Helvetica Neue',
+    sans-serif;
+}
+
+.zoom {
+  margin-bottom: 1em;
+}
+</style>

@@ -1,14 +1,11 @@
 <template>
-  <div
+  <section
     v-if="isVisible"
-    aria-hidden="true"
-    class="project-timeline-bar"
-    :class="{ 'is-actual': actual }"
-    :style="{
-      gridArea: `${order} / ${startIndex} / auto / ${endIndex}`,
-      backgroundColor: color
-    }"
-  />
+    class="project-timeline-label"
+    :style="{ gridArea: `${order} / ${startIndex} / auto / ${endIndex}` }"
+  >
+    <slot />
+  </section>
 </template>
 
 <script>
@@ -22,10 +19,6 @@ export default {
       type: Object,
       required: true
     },
-    color: {
-      type: String,
-      default: undefined
-    },
     order: {
       type: Number,
       default: undefined
@@ -38,9 +31,9 @@ export default {
       type: Date,
       required: true
     },
-    actual: {
-      type: Boolean,
-      default: false
+    team: {
+      type: Array,
+      default: undefined
     }
   },
 
@@ -77,14 +70,8 @@ export default {
 </script>
 
 <style>
-.project-timeline-bar {
-  background-color: silver;
-}
-
-.project-timeline-bar.is-actual {
-  align-self: end;
-  height: 0.5em;
-
-  filter: brightness(85%);
+.project-timeline-label {
+  position: relative;
+  padding: 0.5em 0.75em;
 }
 </style>

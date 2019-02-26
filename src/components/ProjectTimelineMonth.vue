@@ -25,3 +25,9 @@ export default {
   }
 }
 </script>
+
+<style>
+.project-timeline-month {
+  padding: 0.5em 0.75em;
+}
+</style>

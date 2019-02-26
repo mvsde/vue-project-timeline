@@ -24,15 +24,35 @@
 
       <project-timeline-bar
         v-for="(project, i) in projects"
-        :key="`project-${i}`"
+        :key="`project-bar-${i}`"
         :timeline="{ start, end, columns }"
         :color="project.color"
         :order="i + 1"
         :start="project.start"
         :end="project.end"
+      />
+
+      <project-timeline-bar
+        v-for="(project, i) in projects"
+        :key="`project-bar-actual-${i}`"
+        :timeline="{ start, end, columns }"
+        :color="project.color"
+        :order="i + 1"
+        :start="project.actualStart || project.start"
+        :end="project.actualEnd || project.end"
+        actual
+      />
+
+      <project-timeline-label
+        v-for="(project, i) in projects"
+        :key="`project-label-${i}`"
+        :timeline="{ start, end, columns }"
+        :order="i + 1"
+        :start="project.start"
+        :end="project.end"
       >
         {{ project.name }}
-      </project-timeline-bar>
+      </project-timeline-label>
 
       <project-timeline-month
         v-for="(month, name, i) in months"
@@ -48,6 +68,7 @@
 
 <script>
 import ProjectTimelineBar from '@/components/ProjectTimelineBar'
+import ProjectTimelineLabel from '@/components/ProjectTimelineLabel'
 import ProjectTimelineMonth from '@/components/ProjectTimelineMonth'
 import ProjectTimelinePillar from '@/components/ProjectTimelinePillar'
 
@@ -62,6 +83,7 @@ export default {
 
   components: {
     ProjectTimelineBar,
+    ProjectTimelineLabel,
     ProjectTimelineMonth,
     ProjectTimelinePillar
   },
