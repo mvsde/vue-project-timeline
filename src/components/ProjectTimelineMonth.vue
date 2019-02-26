@@ -2,7 +2,7 @@
   <time
     class="project-timeline-month"
     :style="{
-      gridArea: `auto / ${startDay} / -1 / ${endDay}`
+      gridArea: `auto / ${startIndex} / -1 / ${endIndex}`
     }"
   >
     <slot />
@@ -14,11 +14,11 @@ export default {
   name: 'ProjectTimelineMonth',
 
   props: {
-    startDay: {
+    startIndex: {
       type: Number,
       required: true
     },
-    endDay: {
+    endIndex: {
       type: Number,
       required: true
     }

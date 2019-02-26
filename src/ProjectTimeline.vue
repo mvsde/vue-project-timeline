@@ -10,7 +10,7 @@
       class="project-timeline-grid"
       :style="{
         display: 'grid',
-        gridTemplate: `repeat(${rows}, 1fr) min-content / repeat(${days}, 1fr)`,
+        gridTemplate: `repeat(${rows}, 1fr) min-content / repeat(${columns}, 1fr)`,
         width: `${width}%`
       }"
     >
@@ -18,14 +18,14 @@
         v-for="(month, name, i) in months"
         :key="`pillar-${i}`"
         :order="i + 1"
-        :start-day="month.startDay"
-        :end-day="month.endDay"
+        :start-index="month.startDay"
+        :end-index="month.endDay"
       />
 
       <project-timeline-bar
         v-for="(project, i) in projects"
         :key="`project-${i}`"
-        :timeline="{ start, end, days }"
+        :timeline="{ start, end, columns }"
         :color="project.color"
         :order="i + 1"
         :start="project.start"
@@ -37,8 +37,8 @@
       <project-timeline-month
         v-for="(month, name, i) in months"
         :key="`month-${i}`"
-        :start-day="month.startDay"
-        :end-day="month.endDay"
+        :start-index="month.startDay"
+        :end-index="month.endDay"
       >
         {{ name }}
       </project-timeline-month>
@@ -51,15 +51,11 @@ import ProjectTimelineBar from '@/components/ProjectTimelineBar'
 import ProjectTimelineMonth from '@/components/ProjectTimelineMonth'
 import ProjectTimelinePillar from '@/components/ProjectTimelinePillar'
 
-import {
-  differenceInCalendarDays,
-  eachDayOfInterval,
-  getDaysInMonth,
-  lastDayOfMonth,
-  setDate
-} from 'date-fns'
+import { eachDayOfInterval, getDaysInMonth } from 'date-fns'
 
 import formatYearMonth from '@/functions/formatYearMonth'
+import getFirstDayOfMonth from '@/functions/getFirstDayOfMonth'
+import getLastDayOfMonth from '@/functions/getLastDayOfMonth'
 
 export default {
   name: 'ProjectTimeline',
@@ -71,11 +67,11 @@ export default {
   },
 
   props: {
-    timelineStart: {
+    startMonth: {
       type: Date,
       required: true
     },
-    timelineEnd: {
+    endMonth: {
       type: Date,
       required: true
     },
@@ -97,41 +93,46 @@ export default {
       return this.projects.length
     },
     /**
+     * @returns {Number}
+     */
+    columns () {
+      return this.days.length
+    },
+    /**
      * @returns {Date}
      */
     start () {
-      return setDate(this.timelineStart, 1)
+      return getFirstDayOfMonth(this.startMonth)
     },
     /**
      * @returns {Date}
      */
     end () {
-      return lastDayOfMonth(this.timelineEnd)
+      return getLastDayOfMonth(this.endMonth)
     },
     /**
-     * @returns {Number}
+     * @returns {Date[]}
      */
     days () {
-      // Add one day to offset CSS Grid line numbering
-      return differenceInCalendarDays(this.end, this.start) + 1
+      return eachDayOfInterval({ start: this.start, end: this.end })
     },
     /**
      * @returns {{ 'y-MM': { startDay: Number, endDay: Number } }}
      */
     months () {
-      return eachDayOfInterval({ start: this.start, end: this.end })
-        .reduce((accumulator, current, index) => {
-          const month = formatYearMonth(current)
+      return this.days.reduce((accumulator, current, index) => {
+        const month = formatYearMonth(current)
 
-          if (!accumulator[month]) {
-            const startDay = index + 1
-            const endDay = startDay + getDaysInMonth(current)
+        if (!accumulator[month]) {
+          // Add 1 to offset CSS Grid line numbering
+          const startDay = index + 1
+          const endDay = startDay + getDaysInMonth(current)
 
-            accumulator[month] = { startDay, endDay }
-          }
+          accumulator[month] = { startDay, endDay }
+        }
 
-          return accumulator
-        }, {})
+        return accumulator
+      }, {})
     },
     /**
      * @returns {Number}

@@ -7,7 +7,7 @@
       'is-odd': order % 2 === 1
     }"
     :style="{
-      gridArea: `1 / ${startDay} / -1 / ${endDay}`
+      gridArea: `1 / ${startIndex} / -1 / ${endIndex}`
     }"
   />
 </template>
@@ -21,11 +21,11 @@ export default {
       type: Number,
       required: true
     },
-    startDay: {
+    startIndex: {
       type: Number,
       required: true
     },
-    endDay: {
+    endIndex: {
       type: Number,
       required: true
     }

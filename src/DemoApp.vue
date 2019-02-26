@@ -17,8 +17,8 @@
     </button>
 
     <project-timeline
-      :timeline-start="timelineStart"
-      :timeline-end="timelineEnd"
+      :start-month="startMonth"
+      :end-month="endMonth"
       :display-months="displayMonths"
       :projects="projects"
     />
@@ -37,22 +37,22 @@ export default {
 
   data () {
     return {
-      timelineStart: new Date('2018-11-10'),
-      timelineEnd: new Date('2019-05-20'),
+      startMonth: new Date('2018-11-10'),
+      endMonth: new Date('2019-05-20'),
       displayMonths: 6,
       projects: [
         {
           name: 'Visualize vertical interfaces',
-          start: new Date('2018-11-20'),
+          start: new Date('2018-11-10'),
           end: new Date('2019-01-23'),
           actualStart: new Date('2018-11-20'),
-          actualEnd: new Date('2019-01-20')
+          actualEnd: new Date('2019-01-28')
         },
         {
           name: 'Streamline customized models',
           color: 'coral',
-          start: new Date('2019-02-10'),
-          end: new Date('2019-03-04'),
+          start: new Date('2019-01-30'),
+          end: new Date('2019-02-20'),
           actualStart: new Date('2019-02-15')
         },
         {

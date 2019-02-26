@@ -1,3 +1,6 @@
+// Explicitly set the time zone so everything runs smoothly
+process.env.TZ = 'UTC'
+
 module.exports = {
   moduleFileExtensions: [
     'js',
