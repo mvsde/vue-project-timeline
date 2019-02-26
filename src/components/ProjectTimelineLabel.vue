@@ -7,7 +7,19 @@
       backgroundColor: color
     }"
   >
-    <slot />
+    <button
+      v-if="onClick"
+      class="project-timeline-label__button"
+      @click="onClick"
+    >
+      <slot />
+    </button>
+    <span
+      v-else
+      class="project-timeline-label__text"
+    >
+      <slot />
+    </span>
     <project-timeline-team
       v-if="team"
       :members="team"
@@ -50,6 +62,10 @@ export default {
     },
     team: {
       type: Array,
+      default: undefined
+    },
+    onClick: {
+      type: Function,
       default: undefined
     }
   },

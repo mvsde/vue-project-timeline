@@ -67,7 +67,10 @@ export default {
           color: 'coral',
           start: new Date('2019-01-30'),
           end: new Date('2019-03-05'),
-          plannedStart: new Date('2019-01-01')
+          plannedStart: new Date('2019-01-01'),
+          onClick () {
+            console.log('Hello World!')
+          }
         },
         {
           name: 'Evolve front-end infrastructures',

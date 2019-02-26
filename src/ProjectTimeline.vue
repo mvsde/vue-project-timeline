@@ -31,6 +31,7 @@
         :start="project.start"
         :end="project.end"
         :team="project.team"
+        :on-click="project.onClick"
       >
         {{ project.name }}
       </project-timeline-label>
