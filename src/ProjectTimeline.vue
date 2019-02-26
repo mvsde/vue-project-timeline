@@ -54,11 +54,12 @@ import ProjectTimelinePillar from '@/components/ProjectTimelinePillar'
 import {
   differenceInCalendarDays,
   eachDayOfInterval,
-  format,
   getDaysInMonth,
   lastDayOfMonth,
   setDate
 } from 'date-fns'
+
+import formatYearMonth from '@/functions/formatYearMonth'
 
 export default {
   name: 'ProjectTimeline',
@@ -120,7 +121,7 @@ export default {
     months () {
       return eachDayOfInterval({ start: this.start, end: this.end })
         .reduce((accumulator, current, index) => {
-          const month = format(current, 'y-MM')
+          const month = formatYearMonth(current)
 
           if (!accumulator[month]) {
             const startDay = index + 1
