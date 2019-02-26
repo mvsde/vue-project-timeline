@@ -1,5 +1,7 @@
 <template>
-  <div>
+  <main>
+    <h1>Vue.js Project Timeline</h1>
+
     <div class="zoom">
       <button
         aria-label="Zoom out"
@@ -24,7 +26,7 @@
       :display-months="displayMonths"
       :projects="projects"
     />
-  </div>
+  </main>
 </template>
 
 <script>
@@ -45,23 +47,39 @@ export default {
       projects: [
         {
           name: 'Visualize vertical interfaces',
-          start: new Date('2018-11-10'),
-          end: new Date('2019-01-23'),
-          actualStart: new Date('2018-11-20'),
-          actualEnd: new Date('2019-01-28')
+          start: new Date('2018-11-20'),
+          end: new Date('2019-01-28'),
+          plannedStart: new Date('2018-11-10'),
+          plannedEnd: new Date('2019-01-13'),
+          team: [
+            {
+              name: 'Nellie Bender',
+              avatar: 'https://source.unsplash.com/3402kvtHhOo/32x32'
+            },
+            {
+              name: 'Alex Wilkerson',
+              avatar: 'https://source.unsplash.com/das6NrjLoM0/32x32'
+            }
+          ]
         },
         {
           name: 'Streamline customized models',
           color: 'coral',
           start: new Date('2019-01-30'),
           end: new Date('2019-03-05'),
-          actualStart: new Date('2019-02-15')
+          plannedStart: new Date('2019-01-01')
         },
         {
           name: 'Evolve front-end infrastructures',
           color: 'lightblue',
           start: new Date('2019-04-10'),
-          end: new Date('2019-06-23')
+          end: new Date('2019-06-23'),
+          team: [
+            {
+              name: 'Lord ‘Devious’ Brandon',
+              avatar: 'https://source.unsplash.com/uvCxkUuImSw/32x32'
+            }
+          ]
         }
       ]
     }

@@ -22,37 +22,28 @@
         :end-index="month.endDay"
       />
 
+      <project-timeline-label
+        v-for="(project, i) in projects"
+        :key="`project-label-${i}`"
+        :timeline="{ start, end, columns }"
+        :order="i + 1"
+        :color="project.color"
+        :start="project.start"
+        :end="project.end"
+        :team="project.team"
+      >
+        {{ project.name }}
+      </project-timeline-label>
+
       <project-timeline-bar
         v-for="(project, i) in projects"
         :key="`project-bar-${i}`"
         :timeline="{ start, end, columns }"
         :color="project.color"
         :order="i + 1"
-        :start="project.start"
-        :end="project.end"
+        :start="project.plannedStart || project.start"
+        :end="project.plannedEnd || project.end"
       />
-
-      <project-timeline-bar
-        v-for="(project, i) in projects"
-        :key="`project-bar-actual-${i}`"
-        :timeline="{ start, end, columns }"
-        :color="project.color"
-        :order="i + 1"
-        :start="project.actualStart || project.start"
-        :end="project.actualEnd || project.end"
-        actual
-      />
-
-      <project-timeline-label
-        v-for="(project, i) in projects"
-        :key="`project-label-${i}`"
-        :timeline="{ start, end, columns }"
-        :order="i + 1"
-        :start="project.start"
-        :end="project.end"
-      >
-        {{ project.name }}
-      </project-timeline-label>
 
       <project-timeline-month
         v-for="(month, name, i) in months"
@@ -165,9 +156,3 @@ export default {
   }
 }
 </script>
-
-<style>
-.project-timeline__grid {
-  row-gap: 1em;
-}
-</style>

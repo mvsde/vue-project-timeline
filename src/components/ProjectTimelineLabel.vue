@@ -3,18 +3,29 @@
     v-if="isVisible"
     class="project-timeline-label"
     :style="{
-      gridArea: `${order} / ${startIndex} / auto / ${endIndex}`
+      gridArea: `${order} / ${startIndex} / auto / ${endIndex}`,
+      backgroundColor: color
     }"
   >
     <slot />
+    <project-timeline-team
+      v-if="team"
+      :members="team"
+    />
   </section>
 </template>
 
 <script>
+import ProjectTimelineTeam from '@/components/ProjectTimelineTeam'
+
 import { differenceInCalendarDays } from 'date-fns'
 
 export default {
-  name: 'ProjectTimelineBar',
+  name: 'ProjectTimelineLabel',
+
+  components: {
+    ProjectTimelineTeam
+  },
 
   props: {
     timeline: {
@@ -23,6 +34,10 @@ export default {
     },
     order: {
       type: Number,
+      default: 1
+    },
+    color: {
+      type: String,
       default: undefined
     },
     start: {
@@ -74,6 +89,9 @@ export default {
 <style>
 .project-timeline-label {
   position: relative;
-  padding: 0.5em 0.75em;
+  margin: 1em 0;
+  padding: 0.5em 0.75em 1em;
+
+  background-color: silver;
 }
 </style>

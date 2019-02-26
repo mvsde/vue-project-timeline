@@ -1,9 +1,9 @@
 <template>
   <div
     v-if="isVisible"
+    title="Planned time"
     aria-hidden="true"
     class="project-timeline-bar"
-    :class="{ 'is-actual': actual }"
     :style="{
       gridArea: `${order} / ${startIndex} / auto / ${endIndex}`,
       backgroundColor: color
@@ -37,10 +37,6 @@ export default {
     end: {
       type: Date,
       required: true
-    },
-    actual: {
-      type: Boolean,
-      default: false
     }
   },
 
@@ -78,13 +74,12 @@ export default {
 
 <style>
 .project-timeline-bar {
-  background-color: silver;
-}
-
-.project-timeline-bar.is-actual {
   align-self: end;
   height: 0.5em;
+  margin-bottom: 1em;
 
-  filter: brightness(85%);
+  background-color: silver;
+
+  filter: brightness(80%);
 }
 </style>
