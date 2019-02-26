@@ -1,12 +1,13 @@
 <template>
-  <time
+  <div
+    aria-hidden="true"
     class="project-timeline-month"
     :style="{
       gridArea: `auto / ${startIndex} / -1 / ${endIndex}`
     }"
   >
     <slot />
-  </time>
+  </div>
 </template>
 
 <script>

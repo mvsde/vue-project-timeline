@@ -35,6 +35,6 @@ export default {
 
 <style>
 .project-timeline-pillar.is-odd {
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.08);
 }
 </style>

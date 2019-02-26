@@ -7,7 +7,7 @@
     }"
   >
     <div
-      class="project-timeline-grid"
+      class="project-timeline__grid"
       :style="{
         display: 'grid',
         gridTemplate: `repeat(${rows}, 1fr) min-content / repeat(${columns}, 1fr)`,
@@ -165,3 +165,9 @@ export default {
   }
 }
 </script>
+
+<style>
+.project-timeline__grid {
+  row-gap: 1em;
+}
+</style>

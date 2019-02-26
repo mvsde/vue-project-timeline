@@ -2,7 +2,9 @@
   <section
     v-if="isVisible"
     class="project-timeline-label"
-    :style="{ gridArea: `${order} / ${startIndex} / auto / ${endIndex}` }"
+    :style="{
+      gridArea: `${order} / ${startIndex} / auto / ${endIndex}`
+    }"
   >
     <slot />
   </section>
