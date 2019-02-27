@@ -93,15 +93,14 @@ body {
 }
 
 .controls {
-  display: grid;
-  grid-template-columns: repeat(3, max-content);
-  gap: 1em;
-  margin-bottom: 1em;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .controls__item {
   display: flex;
   align-items: center;
+  margin: 0 1em 1em 0;
 }
 
 .controls__label {
@@ -109,6 +108,7 @@ body {
 }
 
 .controls__input {
+  height: 1.5em;
   padding: 0.25em 0.5em;
 
   font-family: inherit;
