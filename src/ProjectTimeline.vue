@@ -93,7 +93,7 @@ export default {
       type: Array,
       required: true
     },
-    displayMonths: {
+    visibleMonths: {
       type: Number,
       default: 12
     }
@@ -152,7 +152,7 @@ export default {
      * @returns {Number}
      */
     width () {
-      return Math.max(100, Object.values(this.months).length / this.displayMonths * 100)
+      return Math.max(100, Object.values(this.months).length / this.visibleMonths * 100)
     }
   }
 }

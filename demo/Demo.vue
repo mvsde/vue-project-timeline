@@ -1,27 +1,52 @@
 <template>
   <main>
-    <div class="zoom">
-      <button
-        aria-label="Zoom out"
-        @click="displayMonths--"
-      >
-        -
-      </button>
+    <header class="controls">
+      <div class="controls__item">
+        <label
+          class="controls__label"
+          for="start-month"
+        >Start:</label>
+        <input
+          id="start-month"
+          v-model="startMonth"
+          class="controls__input"
+          type="month"
+        >
+      </div>
 
-      {{ displayMonths }} months
+      <div class="controls__item">
+        <label
+          class="controls__label"
+          for="end-month"
+        >End:</label>
+        <input
+          id="end-month"
+          v-model="endMonth"
+          class="controls__input"
+          type="month"
+        >
+      </div>
 
-      <button
-        aria-label="Zoom in"
-        @click="displayMonths++"
-      >
-        +
-      </button>
-    </div>
+      <div class="controls__item">
+        <label
+          class="controls__label"
+          for="visible-months"
+        >Visible months:</label>
+        <input
+          id="visible-months"
+          v-model.number="visibleMonths"
+          class="controls__input"
+          type="number"
+          min="1"
+          step="1"
+        >
+      </div>
+    </header>
 
     <project-timeline
-      :start-month="startMonth"
-      :end-month="endMonth"
-      :display-months="displayMonths"
+      :start-month="new Date(startMonth)"
+      :end-month="new Date(endMonth)"
+      :visible-months="visibleMonths"
       :projects="projects"
     />
   </main>
@@ -41,9 +66,9 @@ export default {
 
   data () {
     return {
-      startMonth: new Date('2018-11-10'),
-      endMonth: new Date('2019-05-20'),
-      displayMonths: 6,
+      startMonth: '2018-11',
+      endMonth: '2019-05',
+      visibleMonths: 6,
       projects
     }
   }
@@ -52,6 +77,8 @@ export default {
 
 <style>
 body {
+  margin: 1em;
+
   font-family:
     -apple-system,
     BlinkMacSystemFont,
@@ -65,7 +92,28 @@ body {
     sans-serif;
 }
 
-.zoom {
+.controls {
+  display: grid;
+  grid-template-columns: repeat(3, max-content);
+  gap: 1em;
   margin-bottom: 1em;
+}
+
+.controls__item {
+  display: flex;
+  align-items: center;
+}
+
+.controls__label {
+  margin-right: 0.5em;
+}
+
+.controls__input {
+  padding: 0.25em 0.5em;
+
+  font-family: inherit;
+  font-size: inherit;
+
+  border: 1px solid rgba(0, 0, 0, 0.2);
 }
 </style>
