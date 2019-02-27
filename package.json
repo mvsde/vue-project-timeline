@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve --open src/demo.js",
+    "serve": "vue-cli-service serve --open demo/main.js",
     "build": "vue-cli-service build --target lib --name ProjectTimeline src/ProjectTimeline.vue",
     "lint:js": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit"

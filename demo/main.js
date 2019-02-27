@@ -1,8 +1,8 @@
-import DemoApp from '@/DemoApp'
+import Demo from './Demo'
 import Vue from 'vue'
 
 Vue.config.productionTip = false
 
 new Vue({
-  render: h => h(DemoApp)
+  render: h => h(Demo)
 }).$mount('#project-timeline')
