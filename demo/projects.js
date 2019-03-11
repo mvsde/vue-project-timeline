@@ -28,7 +28,7 @@ const projects = [
   },
   {
     name: 'Evolve front-end infrastructures',
-    color: 'lightblue',
+    color: 'crimson',
     start: new Date('2019-04-10'),
     end: new Date('2019-06-23'),
     team: [

@@ -17,6 +17,7 @@
     <span
       v-else
       class="project-timeline-label__text"
+      :style="{ color: labelColor }"
     >
       <slot />
     </span>
@@ -70,6 +71,12 @@ export default {
     }
   },
 
+  data () {
+    return {
+      labelColor: '#000'
+    }
+  },
+
   computed: {
     /**
      * @returns {Boolean}
@@ -98,6 +105,19 @@ export default {
       // Add 1 to offset CSS Grid line numbering
       return Math.min(this.timeline.columns, end) + 1
     }
+  },
+
+  mounted () {
+    const [r, g, b] = getComputedStyle(this.$el).backgroundColor.match(/\d{1,3}/g)
+    /**
+     * W3C perceived brightness calculator
+     * @see {@link https://www.w3.org/TR/AERT/#color-contrast}
+     */
+    const brightness = ((r * 299) + (g * 587) + (b * 114)) / 1000
+
+    if (brightness < 140) {
+      this.labelColor = '#fff'
+    }
   }
 }
 </script>
@@ -109,10 +129,5 @@ export default {
   padding: 0.5em 0.75em 1em;
 
   background-color: silver;
-}
-
-.project-timeline-label__text {
-  color: #9999;
-  mix-blend-mode: difference;
 }
 </style>
