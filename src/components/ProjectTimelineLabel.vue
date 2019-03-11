@@ -110,4 +110,9 @@ export default {
 
   background-color: silver;
 }
+
+.project-timeline-label__text {
+  color: #9999;
+  mix-blend-mode: difference;
+}
 </style>
