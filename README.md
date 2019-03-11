@@ -54,7 +54,7 @@ export default {
 }
 </script>
 
-<style src="@mvsde/vue-project-timeline"></style>
+<style src="@mvsde/vue-project-timeline/dist/ProjectTimeline.css"></style>
 ```
 
 More advanced demo code can be found within the [demo project](/demo).
