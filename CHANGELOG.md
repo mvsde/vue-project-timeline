@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.1.1](https://github.com/mvsde/vue-project-timeline/compare/v0.1.0...v0.1.1) (2019-03-11)
+
+
+### Bug Fixes
+
+* Add CSS to readme ([e981027](https://github.com/mvsde/vue-project-timeline/commit/e981027))
+* update path to common.js bundle in package.json ([2efdd5a](https://github.com/mvsde/vue-project-timeline/commit/2efdd5a))
+
+
+
 # 0.1.0 (2019-02-27)
 
 
