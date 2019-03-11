@@ -10,7 +10,7 @@
       class="project-timeline__grid"
       :style="{
         display: 'grid',
-        gridTemplate: `repeat(${rows}, 1fr) min-content / repeat(${columns}, 1fr)`,
+        gridTemplate: `repeat(${rows}, max-content) min-content / repeat(${columns}, 1fr)`,
         width: `${width}%`
       }"
     >
@@ -28,8 +28,8 @@
         :timeline="{ start, end, columns }"
         :order="i + 1"
         :color="project.color"
-        :start="project.start"
-        :end="project.end"
+        :start="project.start || project.plannedStart"
+        :end="project.end || project.plannedEnd"
         :team="project.team"
         :on-click="project.onClick"
       >
