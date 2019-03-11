@@ -11,7 +11,7 @@
     "release": "standard-version"
   },
   "main": "dist/ProjectTimeline.common.js",
-  "style": "dist/ProjectTimelin.css",
+  "style": "dist/ProjectTimeline.css",
   "files": [
     "dist",
     "src",
