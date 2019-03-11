@@ -10,8 +10,12 @@
         class="project-timeline-team__avatar"
         :src="member.avatar"
         :alt="member.name"
+        :title="member.name"
       >
-      <span class="project-timeline-team__name">
+      <span
+        v-else
+        class="project-timeline-team__name"
+      >
         {{ member.name }}
       </span>
     </li>
