@@ -109,16 +109,18 @@ export default {
   },
 
   mounted () {
-    const [r, g, b] = getComputedStyle(this.$el).backgroundColor.match(/\d{1,3}/g)
-    /**
-     * W3C perceived brightness calculator
-     * @see {@link https://www.w3.org/TR/AERT/#color-contrast}
-     */
-    const brightness = ((r * 299) + (g * 587) + (b * 114)) / 1000
+    this.$nextTick(() => {
+      const [r, g, b] = getComputedStyle(this.$el).backgroundColor.match(/\d{1,3}/g)
+      /**
+      * W3C perceived brightness calculator
+      * @see {@link https://www.w3.org/TR/AERT/#color-contrast}
+      */
+      const brightness = ((r * 299) + (g * 587) + (b * 114)) / 1000
 
-    if (brightness < 140) {
-      this.textColor = '#fff'
-    }
+      if (brightness < 140) {
+        this.textColor = '#fff'
+      }
+    })
   }
 }
 </script>
