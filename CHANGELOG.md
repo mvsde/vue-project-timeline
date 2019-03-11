@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [0.2.0](https://github.com/mvsde/vue-project-timeline/compare/v0.1.2...v0.2.0) (2019-03-11)
+
+
+### Features
+
+* **ProjectTimelineTeam:** Moving v-for to outer container and display member avatar only when one is set. Otherwise fallback to member name ([6b75c45](https://github.com/mvsde/vue-project-timeline/commit/6b75c45))
+
+
+
 ## [0.1.2](https://github.com/mvsde/vue-project-timeline/compare/v0.1.1...v0.1.2) (2019-03-11)
 
 
