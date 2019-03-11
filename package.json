@@ -10,7 +10,7 @@
     "prepare": "npm run build",
     "release": "standard-version"
   },
-  "main": "dist/projectTimeline.common.js",
+  "main": "dist/ProjectTimeline.common.js",
   "files": [
     "dist",
     "src",
