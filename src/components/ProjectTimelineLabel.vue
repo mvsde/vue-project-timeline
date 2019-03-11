@@ -4,7 +4,8 @@
     class="project-timeline-label"
     :style="{
       gridArea: `${order} / ${startIndex} / auto / ${endIndex}`,
-      backgroundColor: color
+      backgroundColor: color,
+      color: textColor
     }"
   >
     <button
@@ -17,13 +18,13 @@
     <span
       v-else
       class="project-timeline-label__text"
-      :style="{ color: labelColor }"
     >
       <slot />
     </span>
     <project-timeline-team
       v-if="team"
       :members="team"
+      class="project-timeline-team"
     />
   </section>
 </template>
@@ -73,7 +74,7 @@ export default {
 
   data () {
     return {
-      labelColor: '#000'
+      textColor: '#000'
     }
   },
 
@@ -116,7 +117,7 @@ export default {
     const brightness = ((r * 299) + (g * 587) + (b * 114)) / 1000
 
     if (brightness < 140) {
-      this.labelColor = '#fff'
+      this.textColor = '#fff'
     }
   }
 }
