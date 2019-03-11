@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [0.3.0](https://github.com/mvsde/vue-project-timeline/compare/v0.2.0...v0.3.0) (2019-03-11)
+
+
+### Bug Fixes
+
+* **ProjectTimelineLabel:** Make sure the label color has enough contrast ([c0ab980](https://github.com/mvsde/vue-project-timeline/commit/c0ab980))
+* Only use max-content for vertical grid spacing ([64564bd](https://github.com/mvsde/vue-project-timeline/commit/64564bd))
+
+
+### Features
+
+* **ProjectTimelineLabel:** Set mix-blend-mode ([e337692](https://github.com/mvsde/vue-project-timeline/commit/e337692))
+* **ProjectTimelineTeam:** Conditional avatar icon ([6793d25](https://github.com/mvsde/vue-project-timeline/commit/6793d25))
+
+
+
 # [0.2.0](https://github.com/mvsde/vue-project-timeline/compare/v0.1.2...v0.2.0) (2019-03-11)
 
 
