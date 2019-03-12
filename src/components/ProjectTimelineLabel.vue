@@ -109,7 +109,7 @@ export default {
   },
 
   mounted () {
-    this.$nextTick(() => {
+    if (this.$el) {
       const [r, g, b] = getComputedStyle(this.$el).backgroundColor.match(/\d{1,3}/g)
       /**
       * W3C perceived brightness calculator
@@ -120,7 +120,7 @@ export default {
       if (brightness < 140) {
         this.textColor = '#fff'
       }
-    })
+    }
   }
 }
 </script>
