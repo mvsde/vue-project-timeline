@@ -29,7 +29,7 @@
         :order="i + 1"
         :color="project.color"
         :start="project.start || project.plannedStart"
-        :end="project.end || project.plannedEnd"
+        :end="getProjectEnd(project)"
         :team="project.team"
         :on-click="project.onClick"
       >
@@ -153,6 +153,20 @@ export default {
      */
     width () {
       return Math.max(100, Object.values(this.months).length / this.visibleMonths * 100)
+    }
+  },
+
+  methods: {
+    getProjectEnd (project) {
+      if (project.end) {
+        return project.end
+      }
+
+      if (!project.end && new Date(project.plannedEnd) > new Date()) {
+        return project.plannedEnd
+      }
+
+      return new Date()
     }
   }
 }
