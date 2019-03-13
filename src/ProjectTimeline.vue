@@ -22,6 +22,10 @@
         :end-index="month.endDay"
       />
 
+      <project-timeline-today-marker
+        :index="today"
+      />
+
       <project-timeline-label
         v-for="(project, i) in projects"
         :key="`project-label-${i}`"
@@ -63,6 +67,7 @@ import ProjectTimelineBar from '@/components/ProjectTimelineBar'
 import ProjectTimelineLabel from '@/components/ProjectTimelineLabel'
 import ProjectTimelineMonth from '@/components/ProjectTimelineMonth'
 import ProjectTimelinePillar from '@/components/ProjectTimelinePillar'
+import ProjectTimelineTodayMarker from '@/components/ProjectTimelineTodayMarker'
 
 import { eachDayOfInterval, getDaysInMonth } from 'date-fns'
 
@@ -77,7 +82,8 @@ export default {
     ProjectTimelineBar,
     ProjectTimelineLabel,
     ProjectTimelineMonth,
-    ProjectTimelinePillar
+    ProjectTimelinePillar,
+    ProjectTimelineTodayMarker
   },
 
   props: {
@@ -153,6 +159,13 @@ export default {
      */
     width () {
       return Math.max(100, Object.values(this.months).length / this.visibleMonths * 100)
+    },
+    today () {
+      let todayDate = new Date()
+      if (this.start < todayDate && todayDate < this.end) {
+        return eachDayOfInterval({ start: this.start, end: todayDate }).length
+      }
+      return null
     }
   },
 
