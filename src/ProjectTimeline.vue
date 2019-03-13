@@ -23,6 +23,7 @@
       />
 
       <project-timeline-today-marker
+        ref="todayMarker"
         :index="today"
       />
 
@@ -102,6 +103,10 @@ export default {
     visibleMonths: {
       type: Number,
       default: 12
+    },
+    autoScrollToday: {
+      type: Boolean,
+      default: false
     }
   },
 
@@ -166,6 +171,12 @@ export default {
         return eachDayOfInterval({ start: this.start, end: todayDate }).length
       }
       return null
+    }
+  },
+
+  mounted () {
+    if (this.autoScrollToday) {
+      this.$refs.todayMarker.$el.scrollIntoView({ block: 'start' })
     }
   },
 
