@@ -45,12 +45,11 @@ export default {
 }
 
 .project-timeline-team__item {
-  margin-right: 1em;
+  margin-right: 0.5em;
 }
 
 .project-timeline-team__avatar {
   vertical-align: middle;
   border-radius: 50%;
-  margin-right: 0.25em;
 }
 </style>
