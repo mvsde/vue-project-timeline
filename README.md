@@ -83,6 +83,7 @@ More advanced demo code can be found within the [demo project](/demo).
 | `end`          | Date     | ☑        | End date of the project. |
 | `plannedStart` | Date     |          | Planned start date of the project. Displayed as a thin line below the project. |
 | `plannedEnd`   | Date     |          | Planned end date of the project. Displayed as a thin line below the project. |
+| `color`        | String   |          | Set a specific color for a project by using a valid [CSS color](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value). |
 | `team`         | Array    |          | Team members of the project. See [Team members](#team-members) for a detailed format description. |
 | `onClick`      | Function |          | Click handler for the project name. The project name will be a button if a function is provided. |
 
