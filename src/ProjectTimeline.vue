@@ -176,7 +176,7 @@ export default {
 
   mounted () {
     if (this.autoScrollToday) {
-      this.$refs.todayMarker.$el.scrollIntoView({ block: 'start' })
+      this.$refs.todayMarker.$el.scrollIntoView({ inline: 'center' })
     }
   },
 
