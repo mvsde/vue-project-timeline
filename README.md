@@ -64,12 +64,13 @@ More advanced demo code can be found within the [demo project](/demo).
 
 ### Props
 
-| Name            | Type    | Required | Default | Description |
-| --------------- | ------- |:--------:|-------- | ----------- |
-| `startMonth`    | Date    | ☑        |         | First month displayed in the timeline. The first day of the month for the given date will be automatically calculated. |
-| `endMonth`      | Date    | ☑        |         | Last month displayed in the timeline. The last day of the month for the given date will be calculated. |
-| `projects`      | Array   | ☑        |         | List of projects. See [Projects array](#projects-array) for a detailed format description. |
-| `visibleMonths` | Integer |          | `12`    | Number of visible months. A scrollbar will be displayed if the timeline has more months than this value. |
+| Name              | Type    | Required | Default | Description |
+| ----------------- | ------- |:--------:| ------- | ----------- |
+| `startMonth`      | Date    | ☑        |         | First month displayed in the timeline. The first day of the month for the given date will be automatically calculated. |
+| `endMonth`        | Date    | ☑        |         | Last month displayed in the timeline. The last day of the month for the given date will be calculated. |
+| `projects`        | Array   | ☑        |         | List of projects. See [Projects array](#projects-array) for a detailed format description. |
+| `visibleMonths`   | Integer |          | `12`    | Number of visible months. A scrollbar will be displayed if the timeline has more months than this value. |
+| `autoScrollToday` | Boolean |          | `false` | Automatically scroll “today” into view. |
 
 ### Projects array
 
