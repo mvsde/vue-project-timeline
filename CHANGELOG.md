@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [0.4.0](https://github.com/mvsde/vue-project-timeline/compare/v0.3.2...v0.4.0) (2019-03-14)
+
+
+### Bug Fixes
+
+* **ProjectTimelineTeam:** Remove avatar double margin ([731f9dd](https://github.com/mvsde/vue-project-timeline/commit/731f9dd))
+
+
+### Features
+
+* **AutoScroll:** Auto-scroll to today marker ([423c057](https://github.com/mvsde/vue-project-timeline/commit/423c057))
+* **TodayMarker:** Mark today with a grid stripe ([d09525d](https://github.com/mvsde/vue-project-timeline/commit/d09525d))
+
+
+
 ## [0.3.2](https://github.com/mvsde/vue-project-timeline/compare/v0.3.1...v0.3.2) (2019-03-12)
 
 
