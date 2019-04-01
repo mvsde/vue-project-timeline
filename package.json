@@ -14,8 +14,7 @@
   "style": "dist/ProjectTimeline.css",
   "files": [
     "dist",
-    "src",
-    "yarn.lock"
+    "src"
   ],
   "dependencies": {
     "date-fns": "^2.0.0-alpha.27",
