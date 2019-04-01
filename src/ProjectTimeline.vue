@@ -15,8 +15,8 @@
       }"
     >
       <project-timeline-pillar
-        v-for="(month, name, i) in months"
-        :key="`pillar-${i}`"
+        v-for="(month, key, i) in months"
+        :key="`pillar-${key}`"
         :order="i + 1"
         :start-index="month.startDay"
         :end-index="month.endDay"
@@ -52,12 +52,12 @@
       />
 
       <project-timeline-month
-        v-for="(month, name, i) in months"
-        :key="`month-${i}`"
+        v-for="(month, key) in months"
+        :key="`month-${key}`"
         :start-index="month.startDay"
         :end-index="month.endDay"
       >
-        {{ name }}
+        {{ month.format }}
       </project-timeline-month>
     </div>
   </div>
@@ -107,6 +107,10 @@ export default {
     autoScrollToday: {
       type: Boolean,
       default: false
+    },
+    locale: {
+      type: String,
+      default: 'en-US'
     }
   },
 
@@ -152,8 +156,11 @@ export default {
           // Add 1 to offset CSS Grid line numbering
           const startDay = index + 1
           const endDay = startDay + getDaysInMonth(current)
+          const format = current.toLocaleDateString(this.locale, {
+            year: 'numeric', month: 'short'
+          })
 
-          accumulator[month] = { startDay, endDay }
+          accumulator[month] = { startDay, endDay, format }
         }
 
         return accumulator

@@ -71,6 +71,7 @@ More advanced demo code can be found within the [demo project](/demo).
 | `projects`        | Array   | ☑        |         | List of projects. See [Projects array](#projects-array) for a detailed format description. |
 | `visibleMonths`   | Integer |          | `12`    | Number of visible months. A scrollbar will be displayed if the timeline has more months than this value. |
 | `autoScrollToday` | Boolean |          | `false` | Automatically scroll “today” into view. |
+| `locale`          | String  |          | `en-US` | Set the localization with a [locale string](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl#Locale_identification_and_negotiation). |
 
 ### Projects array
 
