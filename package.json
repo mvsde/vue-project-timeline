@@ -2,6 +2,9 @@
   "name": "@mvsde/vue-project-timeline",
   "description": "Gantt chart-like project timeline for Vue.js",
   "version": "0.5.0",
+  "homepage": "https://github.com/mvsde/vue-project-timeline",
+  "repository": "github:mvsde/vue-project-timeline",
+  "bugs": "https://github.com/mvsde/vue-project-timeline/issues",
   "scripts": {
     "serve": "vue-cli-service serve --open demo/main.js",
     "build": "vue-cli-service build --target lib --name ProjectTimeline src/ProjectTimeline.vue",
