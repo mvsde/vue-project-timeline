@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [0.5.0](https://github.com/mvsde/vue-project-timeline/compare/v0.4.1...v0.5.0) (2019-04-01)
+
+
+### Features
+
+* Add localization option ([25b3cec](https://github.com/mvsde/vue-project-timeline/commit/25b3cec))
+* Make labels sticky ([42eb408](https://github.com/mvsde/vue-project-timeline/commit/42eb408))
+
+
+
 ## [0.4.1](https://github.com/mvsde/vue-project-timeline/compare/v0.4.0...v0.4.1) (2019-03-14)
 
 
