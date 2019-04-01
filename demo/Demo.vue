@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <main class="demo">
     <header class="controls">
       <div class="controls__item">
         <label
@@ -48,6 +48,7 @@
       :end-month="new Date(endMonth)"
       :visible-months="visibleMonths"
       :projects="projects"
+      class="timeline"
     />
   </main>
 </template>
@@ -77,7 +78,7 @@ export default {
 
 <style>
 body {
-  margin: 1em;
+  margin: 0;
 
   font-family:
     -apple-system,
@@ -90,6 +91,15 @@ body {
     'Open Sans',
     'Helvetica Neue',
     sans-serif;
+}
+
+.demo {
+  box-sizing: border-box;
+
+  display: grid;
+  grid-template-rows: min-content 1fr;
+  height: 100vh;
+  padding: 1em;
 }
 
 .controls {

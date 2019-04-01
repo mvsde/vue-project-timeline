@@ -8,24 +8,26 @@
       color: textColor
     }"
   >
-    <button
-      v-if="onClick"
-      class="project-timeline-label__button"
-      @click="onClick"
-    >
-      <slot />
-    </button>
-    <span
-      v-else
-      class="project-timeline-label__text"
-    >
-      <slot />
-    </span>
-    <project-timeline-team
-      v-if="team"
-      :members="team"
-      class="project-timeline-team"
-    />
+    <div class="project-timeline-label__content">
+      <button
+        v-if="onClick"
+        class="project-timeline-label__button"
+        @click="onClick"
+      >
+        <slot />
+      </button>
+      <span
+        v-else
+        class="project-timeline-label__text"
+      >
+        <slot />
+      </span>
+      <project-timeline-team
+        v-if="team"
+        :members="team"
+        class="project-timeline-team"
+      />
+    </div>
   </section>
 </template>
 
@@ -129,8 +131,14 @@ export default {
 .project-timeline-label {
   position: relative;
   margin: 1em 0;
-  padding: 0.5em 0.75em 1em;
 
   background-color: silver;
+}
+
+.project-timeline-label__content {
+  position: sticky;
+  display: inline-block;
+  left: 0;
+  padding: 0.5em 0.75em 1em;
 }
 </style>

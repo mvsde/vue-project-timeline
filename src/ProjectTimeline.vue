@@ -3,7 +3,7 @@
     class="project-timeline"
     :style="{
       '-webkit-overflow-scrolling': 'touch',
-      overflowX: 'auto'
+      'overflow': 'auto'
     }"
   >
     <div
