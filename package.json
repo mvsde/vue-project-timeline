@@ -1,6 +1,6 @@
 {
   "name": "@mvsde/vue-project-timeline",
-  "description": "Gantt chart-like project timeline in Vue.js",
+  "description": "Gantt chart-like project timeline for Vue.js",
   "version": "0.4.1",
   "scripts": {
     "serve": "vue-cli-service serve --open demo/main.js",

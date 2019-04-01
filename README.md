@@ -1,5 +1,7 @@
 # Vue.js Project Timeline
 
+Gantt chart-like project timeline for Vue.js.
+
 ![](/docs/screenshot.png?raw=true)
 
 1. [Installation](#installation)
